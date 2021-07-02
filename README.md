@@ -49,6 +49,10 @@ https://sahay-01.herokuapp.com/
 
  ## Images
  <img src="/static/img/1.jpg">
+ <img src="/static/img/2.jpg">
+ <img src="/static/img/3.jpg">
+ <img src="/static/img/4.jpg">
+
 
  ## Contributors
 
