@@ -1,0 +1,34 @@
+.main-overview {
+     display: grid;
+    grid-auto-rows: 104px;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); /* Where the magic happens */
+    grid-gap: 20px;
+    margin: 20px;
+  }
+  
+  .overviewcard {
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #e3e4e6;
+  }
+  
+  .main-cards {
+    align-items: top;
+    float: left;
+    margin: 20px;
+    width: 30%; 
+    height: 55%;
+    background-color:#e3e4e6;
+    color: slategray;
+}
+ .main-cards1 {
+    align-items: top;
+    float: left;
+    margin: 20px;
+    width: 30%; 
+    height: 55%;
+    background-color:#e3e4e6;
+    color: slategray;
+}
+

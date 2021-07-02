@@ -1,0 +1,17 @@
+.column {
+  float: left;
+  width:20%;
+  font-family: "Helvetica Neue";
+  background-color: #DFB887;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+  font-family: "Helvetica Neue";
+  background-color: #DFB887;
+}
+.boxed {
+  border: 1px solid green ;
+}

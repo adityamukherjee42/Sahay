@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../static/CSS/grid-performence.css">
+  <link rel="stylesheet" href="../static/CSS/card.css">
+  <link rel="stylesheet" href="../static/CSS/navigator.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/CSS/styles.css " type="text/css">
+    <link rel="stylesheet" href="../static/CSS/login.css " type="text/css">
+</head>
+<body bgcolor="Turquoise">
+    <div class="popup">
+  <div class="row">
+    <div>
+        <div style="font-size:50.00px;"><h1>Sahay</h1></div>
+    <form method="POST" action="{{ url_for('login') }}">
+                <div class="form-group">
+                    <label for="exampleInputEmail">Username</label>
+                    <input type="text" class="form-control" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword">Password</label>
+                    <input type="password" class="form-control" name="pass" placeholder="Password">
+                </div>
+            </form>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </div>
+        </div>
+  </div>
+    </div>
+</div>
+</body>

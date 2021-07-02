@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="../static/CSS/grid.css">
+  <link rel="stylesheet" href="../static/CSS/card.css">
+  <link rel="stylesheet" href="../static/CSS/navigator.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/CSS/button.css " type="text/css">
+</head>
+<body >
+<div class="grid-container">
+  <header class="header">
+      <h1>Sahay</h1>
+  </header>
+  <aside class="sidenav">
+    <img src="../static/img/icon1.png">
+      <ul class="sidenav__list">
+      <li class="sidenav__list-item">
+          <a href="/home" style="color:#ffffff; text-decoration:none" ><h5>Hospital KPI</h5></a>
+      </li>
+        <li class="sidenav__list-item">
+            <a href="/hospitalperformence" style="color:#ffffff; text-decoration:none" >
+                     <h5>Hospital Performance</h5>
+
+
+                </a>
+
+        </li>
+       <li class="sidenav__list-item">
+          <a href="/dentry" style="color:#ffffff; text-decoration:none" ><h5>Data Entry</h5></a>
+      </li>
+
+      <li class="sidenav__list-item">
+          <a href="/register" style="color:#ffffff; text-decoration:none" ><h5>Register New User</h5></a>
+      </li>
+    </ul>
+  </aside>
+  <main class="main">
+    <div class="main-header">
+      <div id="chart" class="chart"></div>
+    </div>
+   <div class="main-overview">
+     <div class="overviewcard">
+       <span class="overviewcard__icon" style="font-family:Arial, sans-serif; font-size:30.00px; line-height: 17.75px; height: 17.75px; text-align: center; color: back; font-weight: 500; font-style: normal; text-decoration: none;vertical-align:middle;">Total Patients<br></span>
+       <span class="overviewcard__icon" style="font-family: proxima_nova_rgregular, Arial, sans-serif; font-size:25.75px; line-height: 17.75px; height: 17.75px; text-align: left; color: blue; font-weight: normal; font-style: normal; text-decoration: none;vertical-align:middle;"><br>{{k}}</span>
+     </div>
+  <div class="overviewcard">
+    <span class="overviewcard__icon" style="font-family:Arial, sans-serif; font-size:30.00px; line-height: 17.75px; height: 17.75px; text-align: center; color: back; font-weight: 500; font-style: normal; text-decoration: none;vertical-align:middle;">Available staff<br></span>
+       <span class="overviewcard__icon" style="font-family: proxima_nova_rgregular, Arial, sans-serif; font-size:25.75px; line-height: 17.75px; height: 17.75px; text-align: left; color: blue; font-weight: normal; font-style: normal; text-decoration: none;vertical-align:middle;"><br>{{staffsize}}</span>
+  </div>
+   <div class="overviewcard">
+    <span class="overviewcard__icon" style="font-family:Arial, sans-serif; font-size:30.00px; line-height: 17.75px; height: 17.75px; text-align: center; color: back; font-weight: 500; font-style: normal; text-decoration: none;vertical-align:middle;">Avg Waiting Time<br></span>
+       <span class="overviewcard__icon" style="font-family: proxima_nova_rgregular, Arial, sans-serif; font-size:25.75px; line-height: 17.75px; height: 17.75px; text-align: left; color: blue; font-weight: normal; font-style: normal; text-decoration: none;vertical-align:middle;"><br>{{avgwtime}} min</span>
+  </div>
+  <div class="overviewcard">
+    <span class="overviewcard__icon" style="font-family:Arial, sans-serif; font-size:30.00px; line-height: 17.75px; height: 17.75px; text-align: center; color: back; font-weight: 500; font-style: normal; text-decoration: none;vertical-align:middle;">Patients Admitted<br></span>
+       <span class="overviewcard__icon" style="font-family: proxima_nova_rgregular, Arial, sans-serif; font-size:25.75px; line-height: 17.75px; height: 17.75px; text-align: left; color: blue; font-weight: normal; font-style: normal; text-decoration: none;vertical-align:middle;"><br>34,863</span>
+  </div>
+  <div class="overviewcard">
+    <span class="overviewcard__icon" style="font-family:Arial, sans-serif; font-size:30.00px; line-height: 17.75px; height: 17.75px; text-align: center; color: back; font-weight: 500; font-style: normal; text-decoration: none;vertical-align:middle;">Avg cost<br></span>
+       <span class="overviewcard__icon" style="font-family: proxima_nova_rgregular, Arial, sans-serif; font-size:25.75px; line-height: 17.75px; height: 17.75px; text-align: left; color: blue; font-weight: normal; font-style: normal; text-decoration: none;vertical-align:middle;"><br>Rs. {{avgcost}}</span>
+  </div>
+</div>
+    <div class="main-cards">
+  <div class="card-layout">
+      <h5>Inpatients V/S Outpatients</h5>
+      <table>
+    <tr>
+        {% for col in column_names %}
+        <th>{{col}}</th>
+        {% endfor %}
+    </tr>
+    {% for row in row_data %}
+    <tr>
+        {% for col, row_ in zip(column_names, row) %}
+        {% if col == link_column %}
+        {% else %}
+        <td>{{row_}}</td>
+        {% endif %}
+        {% endfor %}
+    </tr>
+    {% endfor %}
+
+</table>
+  </div>
+  <div class="card-layout"><div id="chart1" class="chart1"></div></div>
+</div>
+  </main>
+  <footer class="footer"></footer>
+</div>
+
+
+
+
+</body>
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script type="text/javascript">
+    var graphs = {{graphJSON | safe}};
+    Plotly.plot('chart',graphs,{});
+    var graphs1 = {{graphJSON1 | safe}};
+    Plotly.plot('chart1',graphs1,{});
+</script>
+</html>
