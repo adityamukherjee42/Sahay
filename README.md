@@ -13,11 +13,11 @@
 </div>
 
 ## Table of contents
-* [Discord Usernames](#Discord Username)
-* [Detailed Explanation of idea](#Why  HealthCare Dashboard)
+* [Discord Usernames](#DiscordUsername)
+* [Detailed Explanation of idea](#WhyHealthCareDashboard)
 * [Solution](#Sahay)
-* [Technologies](#Tech Stack)
-* [Real-Time Usage](#Real-Time Usage)
+* [Technologies](#TechStack)
+* [Real-Time Usage](#RealTimeUsage)
 * [Setup](#Setup)
 * [Contributors](#Contributors)
 
