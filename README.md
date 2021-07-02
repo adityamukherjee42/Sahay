@@ -5,8 +5,7 @@
   <div align="center">
   <h2>💻Project Name :Sahay-The hospital dashboard</h2>
   <h2Theme :Healthcare🩹</h2>
-  
-    <h3>Team Mitros Members🤝</h3>
+  <h3>Team Mitros Members🤝</h3>
   <a href="https://github.com/asityamukherjee42"> **Aditya Mukherjee**-SRM University </a>
   
   <a href="https://github.com/MEETDESAI2509"> **Meet Desai** -SRM University</a>
@@ -23,7 +22,7 @@
 
 
 ## Discord Username
-Aditya Mukherjee- Aditya Mukherjee|Participant
+Aditya Mukherjee- Aditya Mukherjee|Participant<br>
 Meet Desai-Meet Desai|Participant
 
 ## Why  HealthCare Dashboard
