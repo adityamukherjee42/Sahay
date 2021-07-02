@@ -12,11 +12,11 @@
 </div>
 
 ## Table of contents
-* [Discord Usernames](#DiscordUsername)
-* [Detailed Explanation of idea](#WhyHealthCareDashboard)
+* [Discord Usernames]
+* [Detailed Explanation of idea]
 * [Solution](#Sahay)
-* [Technologies](#TechStack)
-* [Real-Time Usage](#RealTimeUsage)
+* [Technologies]
+* [Real-Time Usage]
 * [Setup](#Setup)
 * [Contributors](#Contributors)
 
@@ -43,6 +43,9 @@ Our Solution to this problem is A personlized Automated Dashboard - **Sahay** . 
 Sahay will be used in health care sector as a dasboard and provide insight into data that were before taken as just some random numbers and help the hospital run in an efficient manner. It will also help the hospital to be prepared in a better way for any circumstances and that can help the patients to get correct treatment and in as less a time possible. Also with the pandemic we have learnt that as efficiency and time can be the diffrence between life and death and Sahay is certainly a tool that will increase the efficiency and decrease the time.
 
 ## Setup
+wait ,there is no set up to be needed we have deployed it on heroku so here is the link
+
+https://sahay-01.herokuapp.com/
 
  ## Contributors
 
