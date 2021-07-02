@@ -47,6 +47,9 @@ wait ,there is no set up to be needed we have deployed it on heroku so here is t
 
 https://sahay-01.herokuapp.com/
 
+ ## Images
+ <img src="../static/img/1.jpg">
+
  ## Contributors
 
 <table>
