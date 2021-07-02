@@ -48,9 +48,13 @@ wait ,there is no set up to be needed we have deployed it on heroku so here is t
 https://sahay-01.herokuapp.com/
 
  ## Images
+ <h2>Log in page</h2><br>
  <img src="/static/img/1.jpg">
+  <h2>Hospital KPI Dashboard with various visualizations</h2><br>
  <img src="/static/img/2.jpg">
+ <h2>Hospital Performance Dashboard with various visualizations</h2><br>
  <img src="/static/img/3.jpg">
+  <h2>Data Entry Panel</h2><br>
  <img src="/static/img/4.jpg">
 
 
