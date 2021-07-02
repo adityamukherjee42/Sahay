@@ -12,8 +12,7 @@ global pdis
 
 
 
-client=pymongo.MongoClient('mongodb+srv://admin:abcde12345@trial.fk9mp.mongodb.net/test')
-
+client= pymongo.MongoClient("mongodb+srv://admin:abcde12345@trial.fk9mp.mongodb.net/test?retryWrites=true&w=majority")
 
 
 mydb=client['trial']
