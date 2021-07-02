@@ -27,18 +27,23 @@ formtable = mydb.form
 users = mydb.logtrial
 
 dlist=list()
+ilist = list()
+olist = list()
 plist=list()
 alist=list()
 glist = list()
 for i in maintable.find():
     dlist.append(i['date'])
     plist.append(int(i['padd']))
+    ilist.append(int(i['padd']))
     glist.append('Inpatients')
     dlist.append(i['date'])
     plist.append(int(i['pdis']))
+    olist.append(int(i['pdis']))
     glist.append('Outpatients')
     staffsize = i['staff']
-
+paddm = sum(ilist) - sum(olist)
+tpat = int(sum(plist)/2)
 wtime=0
 k=0
 pdict = dict()
@@ -59,8 +64,8 @@ for j in formtable.find():
 
     k+=1
 
-avgwtime=wtime/k
-avgcost=cost/k
+avgwtime=int(wtime/k)
+avgcost=int(cost/k)
 
 agg_result = formtable.aggregate([
    {
@@ -115,7 +120,7 @@ def notdash():
    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
    graphJSON1 = json.dumps(fig1, cls=plotly.utils.PlotlyJSONEncoder)
    return render_template('notdash.html', graphJSON=graphJSON,column_names=df.columns.values, row_data=list(df.values.tolist()),
-                           link_column="", zip=zip,graphJSON1=graphJSON1,avgwtime=avgwtime,avgcost=avgcost,k=k,staffsize=staffsize)
+                           link_column="", zip=zip,graphJSON1=graphJSON1,avgwtime=avgwtime,avgcost=avgcost,k=tpat,staffsize=staffsize,paddm=paddm)
 
 @app.route('/hospitalperformence')
 def hospitalperform():
@@ -232,6 +237,9 @@ def dentry():
 @app.route('/')
 def index():
     return render_template('login.html')
+@app.route('/registerhome')
+def index1():
+    return render_template('register.html')
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -252,11 +260,13 @@ def register():
     if request.method == 'POST':
         #users = mongo.db.users
         existing_user = users.find_one({'name': request.form['username']})
-
+        print('done1')
         if existing_user is None:
             hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
             users.insert({'name': request.form['username'], 'password': hashpass})
             #session['username'] = request.form['username']
+            print('done')
+
             return redirect(url_for('notdash'))
 
         return 'That username already exists!'
