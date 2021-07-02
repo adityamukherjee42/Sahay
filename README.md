@@ -12,11 +12,11 @@
 </div>
 
 ## Table of contents
-* [Discord Usernames]
-* [Detailed Explanation of idea]
+* Discord Usernames
+* Detailed Explanation of idea
 * [Solution](#Sahay)
-* [Technologies]
-* [Real-Time Usage]
+* Technologies
+* Real-Time Usage
 * [Setup](#Setup)
 * [Contributors](#Contributors)
 
