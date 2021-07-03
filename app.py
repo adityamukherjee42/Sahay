@@ -12,7 +12,8 @@ global pdis
 
 
 
-client= pymongo.MongoClient("mongodb+srv://admin:abcde12345@trial.fk9mp.mongodb.net/test?retryWrites=true&w=majority")
+client=pymongo.MongoClient('mongodb+srv://admin:abcde12345@trial.fk9mp.mongodb.net/test')
+
 
 
 mydb=client['trial']
@@ -91,7 +92,78 @@ for i in agg_result:
 app = Flask(__name__)
 @app.route('/home')
 def notdash():
+    mydb = client['trial']
+    dailyinfo = mydb.dailyinfo
+    ptable = mydb.ptable
 
+    maintable = mydb.maintable
+
+    formtable = mydb.form
+
+    users = mydb.logtrial
+
+    dlist = list()
+    ilist = list()
+    olist = list()
+    plist = list()
+    alist = list()
+    glist = list()
+    for i in maintable.find():
+        dlist.append(i['date'])
+        plist.append(int(i['padd']))
+        ilist.append(int(i['padd']))
+        glist.append('Inpatients')
+        dlist.append(i['date'])
+        plist.append(int(i['pdis']))
+        olist.append(int(i['pdis']))
+        glist.append('Outpatients')
+        staffsize = i['staff']
+    paddm = sum(ilist) - sum(olist)
+    tpat = int(sum(plist) / 2)
+    wtime = 0
+    k = 0
+    pdict = dict()
+    cost = 0
+    mcount = 0
+    icount = 0
+    ucount = 0
+    for j in formtable.find():
+        pdict[j['pid']] = {j['dept']: j['wtime']}
+        wtime += int(j['wtime'])
+        cost += int(j['cost'])
+        if (j['btype'] == 'Mediclaim'):
+            mcount += 1
+        if (j['btype'] == 'Insured'):
+            icount += 1
+        if (j['btype'] == 'Uninsured'):
+            ucount += 1
+
+        k += 1
+
+    avgwtime = int(wtime / k)
+    avgcost = int(cost / k)
+
+    agg_result = formtable.aggregate([
+        {
+            "$group": {
+                "_id": '$dept',
+                "Avgwtime": {
+                    "$avg": "$wtime"
+                }
+            }
+        }
+    ])
+    d = dict()
+    cc = 2
+    keys = []
+    vals = []
+    for i in agg_result:
+        for j in i:
+            if (cc % 2 == 0):
+                keys.append(i[j])
+            else:
+                vals.append(i[j])
+            cc += 1
 
 
    df = pd.DataFrame({
@@ -123,6 +195,78 @@ def notdash():
 
 @app.route('/hospitalperformence')
 def hospitalperform():
+    mydb = client['trial']
+    dailyinfo = mydb.dailyinfo
+    ptable = mydb.ptable
+
+    maintable = mydb.maintable
+
+    formtable = mydb.form
+
+    users = mydb.logtrial
+
+    dlist = list()
+    ilist = list()
+    olist = list()
+    plist = list()
+    alist = list()
+    glist = list()
+    for i in maintable.find():
+        dlist.append(i['date'])
+        plist.append(int(i['padd']))
+        ilist.append(int(i['padd']))
+        glist.append('Inpatients')
+        dlist.append(i['date'])
+        plist.append(int(i['pdis']))
+        olist.append(int(i['pdis']))
+        glist.append('Outpatients')
+        staffsize = i['staff']
+    paddm = sum(ilist) - sum(olist)
+    tpat = int(sum(plist) / 2)
+    wtime = 0
+    k = 0
+    pdict = dict()
+    cost = 0
+    mcount = 0
+    icount = 0
+    ucount = 0
+    for j in formtable.find():
+        pdict[j['pid']] = {j['dept']: j['wtime']}
+        wtime += int(j['wtime'])
+        cost += int(j['cost'])
+        if (j['btype'] == 'Mediclaim'):
+            mcount += 1
+        if (j['btype'] == 'Insured'):
+            icount += 1
+        if (j['btype'] == 'Uninsured'):
+            ucount += 1
+
+        k += 1
+
+    avgwtime = int(wtime / k)
+    avgcost = int(cost / k)
+
+    agg_result = formtable.aggregate([
+        {
+            "$group": {
+                "_id": '$dept',
+                "Avgwtime": {
+                    "$avg": "$wtime"
+                }
+            }
+        }
+    ])
+    d = dict()
+    cc = 2
+    keys = []
+    vals = []
+    for i in agg_result:
+        for j in i:
+            if (cc % 2 == 0):
+                keys.append(i[j])
+            else:
+                vals.append(i[j])
+            cc += 1
    df = pd.DataFrame({
       "Day": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
       "Percentage": [2, 19,14,11,20,10,4, 11, 5,4]
